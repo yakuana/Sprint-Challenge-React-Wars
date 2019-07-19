@@ -5,7 +5,7 @@ import "./App.css";
 import axios from "axios"; 
 
 // import components 
-import CharacterCard from "./components/CharacterCard";
+import CharacterCard from "./components/CharacterCard"; 
 
 // example person 
 // {
