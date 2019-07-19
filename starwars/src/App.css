@@ -4,5 +4,23 @@
 .Header {
   color: #443e3e;
   text-shadow: 1px 1px 5px #fff;
+  padding: 20px 0; 
 }
-/* write your parent styles in here for your App.js */
+
+/* write your parent styles in here for your App.js #9C5B33 #B06532*/
+.Cards {
+  display: flex; 
+  flex-flow: row wrap;
+  justify-content: space-evenly; 
+  align-content: flex-start;  
+  width: 80%; 
+  margin: 0 auto; 
+}
+
+.Character-container {
+  margin: 10px 0; 
+}
+
+.Birthday {
+  color: #A6BBD8; 
+}
