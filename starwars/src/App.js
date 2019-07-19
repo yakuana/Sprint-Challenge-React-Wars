@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from "react";
-import './App.css';
+import "./App.css";
 
 // import axios 
 import axios from "axios"; 
+
+// import components 
+import CharacterCard from "./components/CharacterCard";
 
 // example person 
 // {
@@ -36,17 +39,28 @@ import axios from "axios";
 //   "url": "https://swapi.co/api/people/1/"
 // },
 
+
+
 const App = () => {
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
+  // Try to think through what state you'll need for this app before starting. Then build out the state properties here.
+
+  // characters array 
+  const [characterArray, setCharacterArray] = useState([]); 
 
   useEffect(() => {
     axios.get(`https://swapi.co/api/people/`) 
-      .then((results) => {
-        console.log("starwars character api object", results)
+      .then((result) => {
+        // successful 
+        // console.log("starwars character api object", result);
+
+        console.log("characters array", result.data.results);
+
+        // set state characterArray
+        setCharacterArray(result.data.results);
       })
 
       .catch((error) => {
+        // unsuccessful 
         console.log("The Api is currently down", error)
       }); 
   }, []);
@@ -58,6 +72,18 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
+      <div className="Cards">
+        {characterArray.map((character) => {
+        return <CharacterCard 
+        name = {character.name} 
+        gender = {character.gender} 
+        birthday = {character.birth_year} 
+        height = {character.height} 
+        mass = {character.mass} 
+        films = {character.films} 
+        key ={character.url} />
+        })}
+      </div>
     </div>
   );
 }
